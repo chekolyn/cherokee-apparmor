@@ -1,0 +1,38 @@
+# Last Modified: Wed Nov  9 12:23:48 2011
+#include <tunables/global>
+
+/usr/sbin/cherokee-worker {
+  #include <abstractions/base>
+
+  capability chown,
+  capability dac_override,
+  capability net_bind_service,
+  capability setgid,
+  capability setuid,
+
+  network inet tcp,
+  network inet6 stream,
+
+
+  /etc/cherokee/cherokee.conf r,
+  /etc/gai.conf r,
+  /etc/group r,
+  /etc/host.conf r,
+  /etc/hosts r,
+  /etc/ldap.conf r,
+  /etc/ldap.secret r,
+  /etc/nsswitch.conf r,
+  /etc/passwd r,
+  /etc/protocols r,
+  /etc/resolv.conf r,
+  /tmp/cherokee-spawner-* rw,
+  /tmp/cherokee.*/ w,
+  /usr/bin/rrdtool rpx,
+  /usr/sbin/cherokee-worker r,
+  /usr/share/cherokee/** r,
+  /usr/share/phpmyadmin/** r,
+  /var/lib/cherokee/** rw,
+  /var/log/cherokee/** w,
+  /var/www/** r,
+
+}
